@@ -45,8 +45,13 @@ type serverReply struct {
 	dict.Def
 }
 
+var googleAnalytics string
+
 func index(render render.Render) {
-	render.HTML(200, "index", map[string]interface{}{"Type": "enen"})
+	render.HTML(200, "index", map[string]interface{}{
+		"Type":            "enen",
+		"GoogleAnalytics": googleAnalytics,
+	})
 }
 
 func showWordDef(params martini.Params, render render.Render) {
@@ -55,16 +60,17 @@ func showWordDef(params martini.Params, render render.Render) {
 	r := queryWordDef(headword, dictType)
 	if r.Valid {
 		render.HTML(200, "index", map[string]interface{}{
-			"Content":        template.HTML(r.Def.Html()),
-			"Type":           dictType,
-			"Headword":       headword,
-			"MemorizeButton": template.HTML("<button id='add' class='btn dropdown btn-default btn-primary center-col' data-toggle='modal' data-target='#memorize-modal'>Memorize</button>"),
+			"Content":         template.HTML(r.Def.Html()),
+			"Type":            dictType,
+			"GoogleAnalytics": googleAnalytics,
+			"Headword":        headword,
+			"MemorizeButton":  template.HTML("<button id='add' class='btn dropdown btn-default btn-primary center-col' data-toggle='modal' data-target='#memorize-modal'>Memorize</button>"),
 		})
 	} else {
 		render.HTML(200, "index", map[string]interface{}{
-			"Content": template.HTML("<h4 class='center-text'>No definition found :(</h4>"),
-			"Type":           dictType,
-			"Headword":       headword,
+			"Content":  template.HTML("<h4 class='center-text'>No definition found :(</h4>"),
+			"Type":     dictType,
+			"Headword": headword,
 		})
 	}
 }
@@ -177,6 +183,8 @@ func getWordDef(params martini.Params, render render.Render) {
 }
 
 func main() {
+	googleAnalytics = os.Getenv("GOOGLE_ANALYTICS")
+
 	m := martini.Classic()
 	// render html templates from templates directory
 	m.Use(render.Renderer(render.Options{

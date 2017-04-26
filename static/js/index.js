@@ -1,5 +1,3 @@
-var M = {};
-
 M.warningAlert = function() {}
 M.warningAlert.warning = function(message) {
             $("#alert-container").html('<div class="alert alert-danger"><a class="close" data-dismiss="alert">×</a><span>'+message+'</span></div>')
@@ -13,6 +11,9 @@ $(document).ready(function() {
     $("#memorize-modal").on("shown.bs.modal", function() {
         $("#input-email").focus();
     })
+
+  ga('create', M.ga, 'auto');
+  ga('send', 'pageview');
 });
 
 function handleSearchSubmit(event) {
