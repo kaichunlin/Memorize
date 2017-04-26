@@ -1,0 +1,73 @@
+body {
+    background-image: url("/static/images/seamless_paper_texture2.png");
+}
+
+.border-radius-fix {
+    border-bottom-left-radius: 0rem;
+    border-top-left-radius: 0rem;
+}
+
+.center-col {
+    margin: 0 auto;
+}
+
+.center-text {
+    text-align: center;
+}
+
+.input-row {
+    display: flex;
+    margin-left: auto;
+    margin-right: auto
+}
+
+.input-col {
+    padding: 12px;
+}
+
+.input {
+    text-siz: flex;
+}
+
+.dict-type {
+    margin: 12px 0px;
+}
+
+body {
+    padding-top: 5rem;
+}
+
+.container {
+    max-width: 600px;
+}
+.form-input input[type="email"] {
+    margin-bottom: -1px;
+    border-bottom-right-radius: 0;
+    border-bottom-left-radius: 0;
+}
+
+.github-corner:hover .octo-arm {
+    animation: octocat-wave 560ms ease-in-out
+}
+
+@keyframes octocat-wave {
+    0%, 100% {
+        transform: rotate(0)
+    }
+    20%, 60% {
+        transform: rotate(-25deg)
+    }
+    40%, 80% {
+        transform: rotate(10deg)
+    }
+}
+
+@media (max-width: 500px) {
+    .github-corner:hover .octo-arm {
+        animation: none
+    }
+
+    .github-corner .octo-arm {
+        animation: octocat-wave 560ms ease-in-out
+    }
+}
