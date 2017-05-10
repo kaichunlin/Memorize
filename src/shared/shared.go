@@ -10,7 +10,7 @@ const (
 	TimeFormatNotify  = "2006-01-02 15"
 )
 
-var offset = [...]int{0, 1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144}
+var offset = [...]int{1, 2, 3, 5, 8, 13, 21, 34, 55, 89, 144}
 
 func NotifyTimeUnit() time.Duration {
 	if os.Getenv("TEST_MODE") == "true" {
